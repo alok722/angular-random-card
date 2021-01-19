@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-random-card"
+    }
+  },
+  "defaultProject": "angular-random-card",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, EventEmitter, Output  } from '@angular/core';
 import {
   faEnvelope,
   faMapMarkedAlt,
@@ -11,9 +11,10 @@ import {
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
 
   @Input()user;
+  @Output('getUser') getUser: EventEmitter<any> = new EventEmitter();
 
   faEnvelope = faEnvelope;
   faMapMarkedAlt = faMapMarkedAlt;
@@ -22,7 +23,8 @@ export class CardComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  refresh() {
+    this.getUser.emit();
   }
 
 }

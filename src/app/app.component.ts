@@ -11,14 +11,23 @@ import { UserService } from './services/user.service';
 export class AppComponent implements OnInit {
   user: any;
 
-  constructor(private userService: UserService, private toastr: ToastrService) {}
+  constructor(private userService: UserService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.userService.getUser().subscribe((user: any) => {
       this.user = user.results[0];
       this.toastr.info('Profile Loaded. . .');
     }, (err) => {
-      this.toastr.error(err.status, 'Opps');
+      this.toastr.error(err.status, 'Opps, Please reload. . .');
+    });
+  }
+
+  getUser() {
+    this.userService.getUser().subscribe((user: any) => {
+      this.user = user.results[0];
+      this.toastr.info('Profile Loaded. . .');
+    }, (err) => {
+      this.toastr.error(err.status, 'Opps, Please reload. . .');
     });
   }
 }

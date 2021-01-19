@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.userService.getUser().subscribe((user: any) => {
       this.user = user.results[0];
+      this.toastr.info('Profile Loaded. . .');
     }, (err) => {
       this.toastr.error(err.status, 'Opps');
     });
